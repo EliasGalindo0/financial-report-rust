@@ -1,0 +1,10 @@
+[package]
+edition = "2021"
+name = "bank_report_parser"
+version = "0.1.0"
+
+[dependencies]
+csv = "*"
+lopdf = "0.34.0"
+pdf-extract = "0.7.10"
+regex = "1"
