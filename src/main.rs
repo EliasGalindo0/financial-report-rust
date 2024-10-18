@@ -24,13 +24,13 @@ fn main() -> Result<(), Box<dyn Error>> {
     for cap in expense_regex.captures_iter(&cleaned_text) {
         let transaction_name = cap.get(1).map_or("", |m| m.as_str()).to_string();
         let value = cap.get(2).map_or("", |m| m.as_str()).to_string();
-        expenses.push((transaction_name, value)); // Store value without "R$"
+        expenses.push((transaction_name, value));
     }
 
     for cap in revenue_regex.captures_iter(&cleaned_text) {
         let transaction_name = cap.get(1).map_or("", |m| m.as_str()).to_string();
         let value = cap.get(2).map_or("", |m| m.as_str()).to_string();
-        revenues.push((transaction_name, value)); // Store value without "R$"
+        revenues.push((transaction_name, value));
     }
 
     if !expenses.is_empty() {
@@ -63,7 +63,7 @@ fn remove_spaces_in_numbers(text: &str) -> String {
 
     re.replace_all(text, |caps: &regex::Captures| {
         let number = caps.name("number").unwrap().as_str();
-        number.replace(" ", "") 
+        number.replace(" ", "")
     })
     .to_string()
 }
